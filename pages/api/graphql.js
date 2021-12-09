@@ -34,7 +34,7 @@ const resolvers = {
     Mutation: {
         createItem (title){
             const newItem = new Item(title);
-            todoList.items.push(newItem)
+            todoList.items.push(newItem);
             return newItem;
         },
         removeItem (title){
@@ -62,18 +62,13 @@ app.get('/api/graphql', async function (req, reply) {
 })
 app.post('/api/graphql', async function (req, reply) {
     console.log("post");
-    const mutation = `{ createItem (title: "newItemTitle") { title } }`;
-    return reply.graphql(mutation)
+    const mutation = `{ createItem(input: "newItemTitle") { title } }`;
+    return reply.graphql(mutation);
 })
 app.put('/api/graphql', async function (req, reply) {
-  console.log("put");
-  const mutation = `{ deleteItem (title: "Item1") { title } }`;
-  return reply.graphql(mutation)
+    console.log("put");
+    const mutation = `{ deleteItem (title: "Item1") { title } }`;
+    return reply.graphql(mutation);
 })
 
-
 app.listen(3001)
-
-//mutation?
-//how does this link with react relay?
-//connect with a frontend?
