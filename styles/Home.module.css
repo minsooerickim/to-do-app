@@ -108,6 +108,15 @@
   margin-left: 0.5rem;
 }
 
+
+.tasksContainer {
+  text-align: center;
+}
+
+.blue {
+  color: #0070f3;
+}
+
 @media (max-width: 600px) {
   .grid {
     width: 100%;
