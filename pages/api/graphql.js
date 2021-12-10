@@ -23,8 +23,9 @@ const schema = `
   }
 `
 class Item {
-    constructor({title}) {
-      this.title = title
+    constructor(input) {
+      console.log("constructor: " + input);
+      this.title = input;
     }
 }
 const resolvers = {
@@ -32,11 +33,18 @@ const resolvers = {
         list: () => todoList.items,
     },
     Mutation: {
-        createItem (title){
-            const newItem = new Item(title);
+        createItem (_,  { input } ){
+            console.log('Title: ', input);
+            const newItem = new Item(input);
+            console.log(newItem)
             todoList.items.push(newItem);
             return newItem;
         },
+        // createItem (title){
+        //     const newItem = new Item(title);
+        //     todoList.items.push(newItem);
+        //     return newItem;
+        // },
         removeItem (title){
             const idx = todoList.items.findIndex(i => i.title === title)
             if (idx !== -1) {
@@ -62,7 +70,8 @@ app.get('/api/graphql', async function (req, reply) {
 })
 app.post('/api/graphql', async function (req, reply) {
     console.log("post");
-    const mutation = `{ createItem(input: "newItemTitle") { title } }`;
+    // const mutation = `{ createItem(input: "newItemTitle") { title } }`;
+    const mutation = 'mutation addItem { createItem(input: "newItemTitle") { title } }';
     return reply.graphql(mutation);
 })
 app.put('/api/graphql', async function (req, reply) {
