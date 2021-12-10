@@ -6,6 +6,8 @@ const mercurius = require('mercurius')
 const app = Fastify()
 
 const todoList = require('./db.json')
+const fs = require('fs');
+const { parse } = require('path/posix')
 
 const schema = `
   type Item {
@@ -30,14 +32,59 @@ class Item {
 }
 const resolvers = {
     Query: {
-        list: () => todoList.items,
+        list: () => todoList,
     },
     Mutation: {
         createItem (_,  { input } ){
             console.log('Title: ', input);
             const newItem = new Item(input);
             console.log(newItem)
-            todoList.items.push(newItem);
+            // todoList.items.push(newItem);
+
+            // fs.readFile('./pages/api/db.json',function(err,content){
+            //   if(err) throw err;
+            //   var obj = {
+            //     'list': []
+            //   };
+            //   var parseJson = JSON.parse(content);
+            //   parseJson.push(JSON.stringify(newItem));
+            //   var pushObject = JSON.stringify(parseJson);
+            //   obj.list.push(JSON.stringify(newItem));
+            //   fs.writeFile('./pages/api/db.json', pushObject, function(err){
+            //     if(err) throw err;
+            //   })
+            // })
+
+            // fs.appendFile('./pages/api/db.json', JSON.stringify(newItem), function (err) {
+            //   if (err) throw err;
+            //   console.log('Saved!');
+            // });
+
+            // fs.readFile('./pages/api/db.json', "utf8", (err, jsonString) => {
+            //   if (err) {
+            //     console.log("File read failed:", err);
+            //     return;
+            //   }
+            //   console.log("File data:", jsonString);
+            // });
+
+            var data = fs.readFileSync('./pages/api/db.json');
+            var obj = JSON.parse(data);
+
+            let tmp = {
+              "title": input
+            }
+
+            obj.push(tmp);
+            var newData = JSON.stringify(obj);
+
+            fs.writeFile('./pages/api/db.json', newData, err => {
+              // error checking
+              if(err) throw err;
+              
+              console.log("New data added");
+            });
+
             return newItem;
         },
         // createItem (title){
@@ -65,11 +112,10 @@ app.register(require('fastify-cors'), {
   methods: ["GET"]
 })
 app.get('/api/graphql', async function (req, reply) {
-    const query = '{ list { title } }'
+    const query = '{ list { title }}'
     return reply.graphql(query)
 })
 app.post('/api/graphql', async function (req, reply) {
-    console.log("post");
     // const mutation = `{ createItem(input: "newItemTitle") { title } }`;
     const mutation = 'mutation addItem { createItem(input: "newItemTitle") { title } }';
     return reply.graphql(mutation);
