@@ -5,7 +5,7 @@ const mercurius = require('mercurius')
 
 const app = Fastify()
 
-const todoList = require('./db.json')
+const todoList = require('./api/db.json')
 const fs = require('fs');
 const { parse } = require('path/posix')
 
@@ -117,7 +117,7 @@ app.get('/api/graphql', async function (req, reply) {
 })
 app.post('/api/graphql', async function (req, reply) {
     // const mutation = `{ createItem(input: "newItemTitle") { title } }`;
-    const mutation = 'mutation addItem { createItem(input: "newItemTitle") { title } }';
+    const mutation = 'mutation addItemMutation { createItem(input: "newItemTitle") { title } }';
     return reply.graphql(mutation);
 })
 app.put('/api/graphql', async function (req, reply) {

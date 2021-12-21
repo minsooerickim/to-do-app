@@ -3,7 +3,7 @@ import Head from 'next/head'
 import Image from 'next/image'
 import styles from '../styles/Home.module.css'
 
-import Button from '../components/button'
+import Button from '../src/components/button'
 
 const Home: NextPage = () => {
   return (

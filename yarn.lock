@@ -1025,7 +1025,7 @@ babel-plugin-macros@^2.0.0:
 
 babel-plugin-relay@^12.0.0:
   version "12.0.0"
-  resolved "https://registry.npmjs.org/babel-plugin-relay/-/babel-plugin-relay-12.0.0.tgz"
+  resolved "https://registry.yarnpkg.com/babel-plugin-relay/-/babel-plugin-relay-12.0.0.tgz#cdce02494b69e9477a4507f9972f8473081b732d"
   integrity sha512-fQWmS3YEu1smPx4xrn+7RyzDAlgVDG5q2m5cb+qC/Tr2+gANkxqGtQ+YPiOX6g4rgdbE+7a6RT3lViBExYBVKw==
   dependencies:
     babel-plugin-macros "^2.0.0"
@@ -2504,15 +2504,15 @@ graphql@^14.0.2:
   dependencies:
     iterall "^1.2.2"
 
+graphql@^15.0.0:
+  version "15.8.0"
+  resolved "https://registry.yarnpkg.com/graphql/-/graphql-15.8.0.tgz#33410e96b012fa3bdb1091cc99a94769db212b38"
+  integrity sha512-5gghUc24tP9HRznNpV2+FIoq3xKkj5dTQqf4v0CpdPbFVwFkWoxOM+o+2OC9ZSvjEMTjfmG9QT+gcvggTwW1zw==
+
 graphql@^15.5.1:
   version "15.7.2"
   resolved "https://registry.npmjs.org/graphql/-/graphql-15.7.2.tgz"
   integrity sha512-AnnKk7hFQFmU/2I9YSQf3xw44ctnSFCfp3zE0N6W174gqe9fWG/2rKaKxROK7CcI3XtERpjEKFqts8o319Kf7A==
-
-graphql@^16.2.0:
-  version "16.2.0"
-  resolved "https://registry.yarnpkg.com/graphql/-/graphql-16.2.0.tgz#de3150e80f1fc009590b92a9d16ab1b46e12b656"
-  integrity sha512-MuQd7XXrdOcmfwuLwC2jNvx0n3rxIuNYOxUtiee5XOmfrWo613ar2U8pE7aHAKh8VwfpifubpD9IP+EdEAEOsA==
 
 has-bigints@^1.0.1:
   version "1.0.1"
@@ -3775,7 +3775,7 @@ react-refresh@0.8.3:
 
 react-relay@^12.0.0:
   version "12.0.0"
-  resolved "https://registry.npmjs.org/react-relay/-/react-relay-12.0.0.tgz"
+  resolved "https://registry.yarnpkg.com/react-relay/-/react-relay-12.0.0.tgz#1b4d9429253b3d7c4d1dff5de7337a1de8b896e5"
   integrity sha512-nDWJherEDtK35kK+gcDLUT6dhUG7EYQ8ePDJiCKBqCnkCx1272Ll7JcmYRBwyeL+IEp7J+CnUOAhv82VZxUh6g==
   dependencies:
     "@babel/runtime" "^7.0.0"
@@ -3868,7 +3868,7 @@ relay-config@^12.0.1:
   dependencies:
     cosmiconfig "^5.0.5"
 
-relay-runtime@12.0.0:
+relay-runtime@12.0.0, relay-runtime@^12.0.0:
   version "12.0.0"
   resolved "https://registry.npmjs.org/relay-runtime/-/relay-runtime-12.0.0.tgz"
   integrity sha512-QU6JKr1tMsry22DXNy9Whsq5rmvwr3LSZiiWV/9+DFpuTWvp+WFhobWMc8TC4OjKFfNhEZy7mOiqUAn5atQtug==

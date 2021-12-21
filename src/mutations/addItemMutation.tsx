@@ -1,17 +1,17 @@
 import {commitMutation, graphql} from 'react-relay'
 import { ConnectionHandler } from 'react-relay'
-import environment from '../pages/api/relayEnv'
+import environment from '../../pages/api/relayEnv'
 
 const mutation = graphql`
-    mutation addItem
+    mutation addItemMutation($input: String!)
     {    
-      createItem(input: "newItemTitle") {      
+      createItem(input: $input) {      
         title
       }  
     }
 `;
 
-export default function createItem(input: String) {  
+export default function addItemMutation(input: String) {  
   const variables = {    
     input
   };
