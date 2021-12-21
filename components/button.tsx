@@ -1,33 +1,12 @@
 import React from 'react';
 import styles from '../styles/button.module.css'
 
-import {commitMutation, Environment} from 'react-relay';
+import {commitMutation, Environment, graphql} from 'react-relay';
 import relayEnv from '../pages/api/relayEnv'
 
+import createItemMutation from '../mutations/createItemMutation'
+
 export default function Button() {
-  const mutation = graphql`
-  mutation addItem
-  {    
-    createItem(input: "newItemTitle") {      
-      title
-    }  
-  }
-  `;
-  function createItem(environment: Environment, input: String) {  
-    const variables = {    
-      input
-    };
-    commitMutation(    
-      environment,    {      
-        mutation,      
-        variables,      
-        onCompleted: (response, errors) => {        
-          console.log('Response received from server.')      
-        },      
-        onError: err => console.error(err),    
-      },  
-    );
-  }
 
   const displayTask = (event: React.MouseEvent<HTMLButtonElement>) => {
     event.preventDefault();
@@ -39,7 +18,7 @@ export default function Button() {
         return tasks;
     }
     fetchTasks().then(res => {
-      res.data.list.forEach((task: { title: string; }) => {
+      res.data.list.forEach((task: {  title: string; }) => {
           console.log(task);
           var p = document.createElement('p')
           var text = document.createTextNode(task.title);
@@ -50,8 +29,8 @@ export default function Button() {
   };
   const createTask = (event: React.MouseEvent<HTMLButtonElement>) => {
     event.preventDefault();
-    
-    createItem(relayEnv, "hello");
+    createItemMutation("hello");
+    // createItem(relayEnv, "hello"); 
   }
   return (
       <div className={styles.container}>

@@ -1,13 +1,13 @@
 type Item {
     title: String!
-}
+  }
 
-type Query {
+  type Query {
     list: [Item]
-}
+  }
 
-type Mutation {
+  type Mutation {
     createItem(input: String!): Item
     removeItem(input: String!): Item
     deleteItem(id: String!): String
-}
+  }
