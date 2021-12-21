@@ -5,24 +5,30 @@
     "dev": "concurrently \"next dev\" \"node pages/api/graphql.js\"",
     "build": "next build",
     "start": "next start",
-    "lint": "next lint"
+    "lint": "next lint",
+    "relay": "relay-compiler --src ./src --schema ./src/schema.graphql"
   },
   "dependencies": {
-    "concurrently": "^6.4.0",
+    "concurrently": "^6.5.1",
     "fastify": "^3.24.1",
     "fastify-cors": "^6.0.2",
-    "graphql": "^16.1.0",
+    "graphql": "^16.2.0",
     "graphql-request": "^3.7.0",
     "mercurius": "^8.11.2",
     "next": "12.0.7",
-    "react": "17.0.2",
-    "react-dom": "17.0.2"
+    "react": "^17.0.2",
+    "react-dom": "^17.0.2",
+    "react-relay": "^12.0.0"
   },
   "devDependencies": {
     "@types/node": "16.11.11",
     "@types/react": "17.0.37",
+    "@types/react-relay": "^11.0.3",
+    "babel-plugin-relay": "^12.0.0",
     "eslint": "8.4.0",
     "eslint-config-next": "12.0.7",
+    "relay-compiler": "^12.0.0",
+    "relay-config": "^12.0.1",
     "typescript": "4.5.2"
   }
 }

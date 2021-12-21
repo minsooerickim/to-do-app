@@ -1,0 +1,13 @@
+type Item {
+    title: String!
+}
+
+type Query {
+    list: [Item]
+}
+
+type Mutation {
+    createItem(input: String!): Item
+    removeItem(input: String!): Item
+    deleteItem(id: String!): String
+}
