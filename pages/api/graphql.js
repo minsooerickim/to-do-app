@@ -5,7 +5,7 @@ const mercurius = require('mercurius')
 
 const app = Fastify()
 
-const todoList = require('./api/db.json')
+const todoList = require('./db.json')
 const fs = require('fs');
 // const { parse } = require('path/posix')
 
@@ -19,7 +19,7 @@ const schema = `
   }
 
   type Mutation {
-    createItem(input: String!): Item
+    addItemMutation(input: String!): Item
     removeItem(input: String!): Item
     deleteItem(id: String!): String
   }
@@ -35,7 +35,7 @@ const resolvers = {
         list: () => todoList,
     },
     Mutation: {
-        createItem (_,  { input } ){
+        addItemMutation (_,  { input } ){
             console.log('Title: ', input);
             const newItem = new Item(input);
             console.log(newItem)
@@ -107,16 +107,16 @@ app.register(mercurius, {
     schema,
     resolvers
 })
+
 app.register(require('fastify-cors'), {
   origin: "*",
-  methods: ["GET"]
+  methods: ['POST', 'GET', 'DELETE', 'OPTIONS', 'PUT', 'HEAD'],
 })
 // app.get('/api/graphql', async function (req, reply) {
 //     const query = '{ list { title }}'
 //     return reply.graphql(query)
 // })
-// app.post('/api/graphql', async function (req, reply) {
-//     // const mutation = `{ createItem(input: "newItemTitle") { title } }`;
+// app.post('/api/graphql/post', async function (req, reply) {
 //     const mutation = 'mutation addItemMutation { createItem(input: "bruh") { title } }';
 //     return reply.graphql(mutation);
 // })
@@ -126,4 +126,11 @@ app.register(require('fastify-cors'), {
 //     return reply.graphql(mutation);
 // })
 
-app.listen(3001)
+const config = {
+  api: {
+    bodyParser: false,
+  },
+}
+module.exports = {config, resolvers}
+
+app.listen(3001);

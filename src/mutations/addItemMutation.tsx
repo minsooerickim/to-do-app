@@ -5,7 +5,7 @@ import environment from '../../pages/api/relayEnv'
 const mutation = graphql`
     mutation addItemMutation($input: String!)
     {    
-      createItem(input: $input) {      
+      addItemMutation(input: $input) {      
         title
       }  
     }

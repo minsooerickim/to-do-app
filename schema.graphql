@@ -7,7 +7,7 @@ type Item {
   }
 
   type Mutation {
-    createItem(input: String!): Item
+    addItemMutation(input: String!): Item
     removeItem(input: String!): Item
     deleteItem(id: String!): String
   }

@@ -8,7 +8,7 @@ export type addItemMutationVariables = {
     input: string;
 };
 export type addItemMutationResponse = {
-    readonly createItem: {
+    readonly addItemMutation: {
         readonly title: string;
     } | null;
 };
@@ -23,7 +23,7 @@ export type addItemMutation = {
 mutation addItemMutation(
   $input: String!
 ) {
-  createItem(input: $input) {
+  addItemMutation(input: $input) {
     title
   }
 }
@@ -49,7 +49,7 @@ v1 = [
     ],
     "concreteType": "Item",
     "kind": "LinkedField",
-    "name": "createItem",
+    "name": "addItemMutation",
     "plural": false,
     "selections": [
       {
@@ -81,14 +81,14 @@ return {
     "selections": (v1/*: any*/)
   },
   "params": {
-    "cacheID": "09069c0e84a9483ac7141db8b9f5523f",
+    "cacheID": "ee90e1a1a2d86d10eb59a077f45c0316",
     "id": null,
     "metadata": {},
     "name": "addItemMutation",
     "operationKind": "mutation",
-    "text": "mutation addItemMutation(\n  $input: String!\n) {\n  createItem(input: $input) {\n    title\n  }\n}\n"
+    "text": "mutation addItemMutation(\n  $input: String!\n) {\n  addItemMutation(input: $input) {\n    title\n  }\n}\n"
   }
 };
 })();
-(node as any).hash = 'cdb9147293e6d7435ffc6be42e67b899';
+(node as any).hash = '289e764cd0992b8342a421f1852c8036';
 export default node;
