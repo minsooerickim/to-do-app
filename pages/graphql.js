@@ -7,7 +7,7 @@ const app = Fastify()
 
 const todoList = require('./api/db.json')
 const fs = require('fs');
-const { parse } = require('path/posix')
+// const { parse } = require('path/posix')
 
 const schema = `
   type Item {
@@ -111,19 +111,19 @@ app.register(require('fastify-cors'), {
   origin: "*",
   methods: ["GET"]
 })
-app.get('/api/graphql', async function (req, reply) {
-    const query = '{ list { title }}'
-    return reply.graphql(query)
-})
-app.post('/api/graphql', async function (req, reply) {
-    // const mutation = `{ createItem(input: "newItemTitle") { title } }`;
-    const mutation = 'mutation addItemMutation { createItem(input: "newItemTitle") { title } }';
-    return reply.graphql(mutation);
-})
-app.put('/api/graphql', async function (req, reply) {
-    console.log("put");
-    const mutation = `{ deleteItem (title: "Item1") { title } }`;
-    return reply.graphql(mutation);
-})
+// app.get('/api/graphql', async function (req, reply) {
+//     const query = '{ list { title }}'
+//     return reply.graphql(query)
+// })
+// app.post('/api/graphql', async function (req, reply) {
+//     // const mutation = `{ createItem(input: "newItemTitle") { title } }`;
+//     const mutation = 'mutation addItemMutation { createItem(input: "bruh") { title } }';
+//     return reply.graphql(mutation);
+// })
+// app.put('/api/graphql', async function (req, reply) {
+//     console.log("put");
+//     const mutation = `{ deleteItem (title: "Item1") { title } }`;
+//     return reply.graphql(mutation);
+// })
 
 app.listen(3001)

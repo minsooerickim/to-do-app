@@ -1,9 +1,6 @@
 import React from 'react';
 import styles from '../../styles/button.module.css'
 
-import {commitMutation, Environment, graphql} from 'react-relay';
-import relayEnv from '../../pages/api/relayEnv'
-
 import addItemMutation from '../mutations/addItemMutation';
 
 export default function Button() {
@@ -28,10 +25,8 @@ export default function Button() {
     });
   };
   const createTask = (event: React.MouseEvent<HTMLButtonElement>) => {
-    console.log('hello does this print');
     event.preventDefault();
     addItemMutation("hello");
-    // createItem(relayEnv, "hello"); 
   }
   return (
       <div className={styles.container}>

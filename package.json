@@ -2,7 +2,7 @@
   "name": "prytaneum-hw",
   "private": true,
   "scripts": {
-    "dev": "concurrently \"next dev\" \"node pages/api/graphql.js\"",
+    "dev": "concurrently \"next dev\" \"node pages/graphql.js\"",
     "build": "next build",
     "start": "next start",
     "lint": "next lint",
