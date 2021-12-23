@@ -20,7 +20,7 @@ export default function App() {
             <div>
                 {data.list!.map((task, i) => {     
                     console.log(task?.title)
-                    return <p key={i}>{task?.title}</p> 
+                    return <p key={i}>{i+1}. {task?.title}</p> 
                 })}
             </div>
         )

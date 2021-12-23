@@ -2,6 +2,7 @@
     height: 100px;
     width: 200px;
     cursor: pointer;
+    margin-bottom: 50px;
 }
 .divider {
     display: inline-block;
@@ -10,4 +11,8 @@
 .container {
     justify-content: space-between;
     margin-top: 50px;
+}
+.subContent {
+    display: flex;
+    justify-content: center;
 }
