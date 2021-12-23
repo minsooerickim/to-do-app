@@ -1,4 +1,4 @@
-import {commitMutation, graphql} from 'react-relay'
+import { commitMutation, graphql } from 'react-relay'
 import { ConnectionHandler } from 'react-relay'
 import environment from '../../pages/api/relayEnv'
 
