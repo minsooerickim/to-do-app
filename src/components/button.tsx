@@ -1,38 +1,25 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import styles from '../../styles/button.module.css'
-
 import { InputForm } from '../components/input'
+import ListQuery  from '../queries/listQuery'
 
 export default function Button() {
 
   const displayTask = (event: React.MouseEvent<HTMLButtonElement>) => {
-    setIsFormVisible(!isFormVisible);
     event.preventDefault();
+    setIsFormVisible(!isFormVisible);
+    setIsListVisible(!isListVisible);
 
-    const container = document.getElementById('tasksContainer');
-    async function fetchTasks() {
-        const response = await fetch('http://localhost:3001/api/graphql');
-        const tasks = await response.json();
-        return tasks;
-    }
-    fetchTasks().then(res => {
-      res.data.list.forEach((task: {  title: string; }) => {
-          console.log(task);
-          var p = document.createElement('p')
-          var text = document.createTextNode(task.title);
-          p.appendChild(text);
-          container!.append(p)
-      })
-    });
   };
 
   const createTask = (event: React.MouseEvent<HTMLButtonElement>) => {
     event.preventDefault();
 
-    //ask for user input and submit a mutation
     setIsFormVisible(!isFormVisible);
+    setIsListVisible(!isListVisible);
   }
   const [isFormVisible, setIsFormVisible] = useState(false);
+  const [isListVisible, setIsListVisible] = useState(false);
   return (
       <div className={styles.container}>
         <button className={styles.button}
@@ -62,6 +49,7 @@ export default function Button() {
 
         <div>
           {isFormVisible && <div><InputForm/></div>}
+          {isListVisible && <div><ListQuery/></div>}
         </div>
       </div>
 

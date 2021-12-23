@@ -7,7 +7,6 @@ const app = Fastify()
 
 const todoList = require('./db.json')
 const fs = require('fs');
-// const { parse } = require('path/posix')
 
 const schema = `
   type Item {
@@ -32,7 +31,7 @@ class Item {
 }
 const resolvers = {
     Query: {
-        list: () => todoList,
+        list: () => todoList
     },
     Mutation: {
         addItemMutation (_,  { input } ){
@@ -80,19 +79,6 @@ app.register(require('fastify-cors'), {
   origin: "*",
   methods: ['POST', 'GET', 'DELETE', 'OPTIONS', 'PUT', 'HEAD'],
 })
-// app.get('/api/graphql', async function (req, reply) {
-//     const query = '{ list { title }}'
-//     return reply.graphql(query)
-// })
-// app.post('/api/graphql/post', async function (req, reply) {
-//     const mutation = 'mutation addItemMutation { createItem(input: "bruh") { title } }';
-//     return reply.graphql(mutation);
-// })
-// app.put('/api/graphql', async function (req, reply) {
-//     console.log("put");
-//     const mutation = `{ deleteItem (title: "Item1") { title } }`;
-//     return reply.graphql(mutation);
-// })
 
 const config = {
   api: {
