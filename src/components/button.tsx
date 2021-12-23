@@ -1,11 +1,12 @@
-import React from 'react';
+import React, { useState } from 'react';
 import styles from '../../styles/button.module.css'
 
-import addItemMutation from '../mutations/addItemMutation';
+import { InputForm } from '../components/input'
 
 export default function Button() {
 
   const displayTask = (event: React.MouseEvent<HTMLButtonElement>) => {
+    setIsFormVisible(!isFormVisible);
     event.preventDefault();
 
     const container = document.getElementById('tasksContainer');
@@ -24,10 +25,14 @@ export default function Button() {
       })
     });
   };
+
   const createTask = (event: React.MouseEvent<HTMLButtonElement>) => {
     event.preventDefault();
-    addItemMutation("hello");
+
+    //ask for user input and submit a mutation
+    setIsFormVisible(!isFormVisible);
   }
+  const [isFormVisible, setIsFormVisible] = useState(false);
   return (
       <div className={styles.container}>
         <button className={styles.button}
@@ -54,6 +59,10 @@ export default function Button() {
         >
         Display Task
         </button>
+
+        <div>
+          {isFormVisible && <div><InputForm/></div>}
+        </div>
       </div>
 
   )

@@ -39,35 +39,7 @@ const resolvers = {
             console.log('Title: ', input);
             const newItem = new Item(input);
             console.log(newItem)
-            // todoList.items.push(newItem);
-
-            // fs.readFile('./pages/api/db.json',function(err,content){
-            //   if(err) throw err;
-            //   var obj = {
-            //     'list': []
-            //   };
-            //   var parseJson = JSON.parse(content);
-            //   parseJson.push(JSON.stringify(newItem));
-            //   var pushObject = JSON.stringify(parseJson);
-            //   obj.list.push(JSON.stringify(newItem));
-            //   fs.writeFile('./pages/api/db.json', pushObject, function(err){
-            //     if(err) throw err;
-            //   })
-            // })
-
-            // fs.appendFile('./pages/api/db.json', JSON.stringify(newItem), function (err) {
-            //   if (err) throw err;
-            //   console.log('Saved!');
-            // });
-
-            // fs.readFile('./pages/api/db.json', "utf8", (err, jsonString) => {
-            //   if (err) {
-            //     console.log("File read failed:", err);
-            //     return;
-            //   }
-            //   console.log("File data:", jsonString);
-            // });
-
+        
             var data = fs.readFileSync('./pages/api/db.json');
             var obj = JSON.parse(data);
 
@@ -87,11 +59,7 @@ const resolvers = {
 
             return newItem;
         },
-        // createItem (title){
-        //     const newItem = new Item(title);
-        //     todoList.items.push(newItem);
-        //     return newItem;
-        // },
+
         removeItem (title){
             const idx = todoList.items.findIndex(i => i.title === title)
             if (idx !== -1) {
