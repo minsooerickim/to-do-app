@@ -11,6 +11,7 @@ export default function Button() {
     
     //set everything else to false
     setIsFormVisible(false);
+    setIsDeleteVisible(false);
   };
 
   const createTask = (event: React.MouseEvent<HTMLButtonElement>) => {
@@ -20,9 +21,21 @@ export default function Button() {
     
     //set everything else to false
     setIsListVisible(false);
+    setIsDeleteVisible(false);
+  }
+  
+  const deleteItem = (event: React.MouseEvent<HTMLButtonElement>) => {
+    event.preventDefault();
+
+    setIsDeleteVisible(!isDeleteVisible);
+    
+    //set everything else to false
+    setIsListVisible(false);
+    setIsFormVisible(false);
   }
   const [isFormVisible, setIsFormVisible] = useState(false);
   const [isListVisible, setIsListVisible] = useState(false);
+  const [isDeleteVisible, setIsDeleteVisible] = useState(false);
   return (
       <div className={styles.container}>
         <button className={styles.button}
@@ -36,7 +49,7 @@ export default function Button() {
         
         <button className={styles.button}
           title="Delete Task"
-          onClick={() => console.log("should delete task")}
+          onClick={deleteItem}
         >
         Delete Task
         </button>
@@ -51,7 +64,8 @@ export default function Button() {
         </button>
 
         <div className={styles.subContent}>
-          {isFormVisible && <div><InputForm/></div>}
+          {isFormVisible && <div><InputForm value="Add Task" type="add"/></div>}
+          {isDeleteVisible && <div><InputForm value="Delete Task" type="delete"/></div>}
           {isListVisible && <div><ListQuery/></div>}
         </div>
       </div>

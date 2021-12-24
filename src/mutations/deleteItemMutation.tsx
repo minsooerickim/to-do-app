@@ -1,17 +1,14 @@
 import { commitMutation, graphql } from 'react-relay'
-import { ConnectionHandler } from 'react-relay'
 import environment from '../../pages/api/relayEnv'
 
 const mutation = graphql`
-    mutation addItemMutation($input: String!)
+    mutation deleteItemMutation($input: String!)
     {    
-      addItemMutation(input: $input) {      
-        title
-      }  
+      deleteItemMutation(input: $input)  
     }
 `;
 
-export default function addItemMutation(input: String) {  
+export default function deleteItemMutation(input: String) {  
   const variables = {    
     input
   };
@@ -20,7 +17,7 @@ export default function addItemMutation(input: String) {
       mutation,      
       variables,      
       onCompleted: (response, errors) => {        
-        console.log('Response received from server (add).')      
+        console.log('Response received from server (delete).')      
       },      
       onError: err => console.error(err),    
     },  

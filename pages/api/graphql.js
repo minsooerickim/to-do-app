@@ -19,8 +19,7 @@ const schema = `
 
   type Mutation {
     addItemMutation(input: String!): Item
-    removeItem(input: String!): Item
-    deleteItem(id: String!): String
+    deleteItemMutation(input: String!): String
   }
 `
 class Item {
@@ -53,19 +52,27 @@ const resolvers = {
               // error checking
               if(err) throw err;
               
-              console.log("New data added");
+              console.log("'" + input + "' task added");
             });
 
             return newItem;
         },
+        deleteItemMutation(_,  { input } ){
+          var data = fs.readFileSync('./pages/api/db.json');
+          var obj = JSON.parse(data);
+          
+          var filtered = obj.filter(function(item) { 
+            return item.title !== input;  
+          });
 
-        removeItem (title){
-            const idx = todoList.items.findIndex(i => i.title === title)
-            if (idx !== -1) {
-              todoList.items.splice(idx, 1)
-              return `Item ${title} deleted with success`
-            }
-            throw new Error('Item not found');
+          var newData = JSON.stringify(filtered);
+
+          fs.writeFile('./pages/api/db.json', newData, err => {
+            // error checking
+            if(err) throw err;
+            
+            console.log("'" + input + "' task deleted");
+          });
       }
     }
 }

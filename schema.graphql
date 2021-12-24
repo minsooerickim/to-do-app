@@ -8,6 +8,5 @@ type Query {
 
 type Mutation {
   addItemMutation(input: String!): Item
-  removeItem(input: String!): Item
-  deleteItem(id: String!): String
+  deleteItemMutation(input: String!): String
 }
