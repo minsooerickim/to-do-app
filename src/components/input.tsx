@@ -12,8 +12,8 @@ export function InputForm() {
     return (
         <form onSubmit={handleSubmit}>
           <label>
-            Frirst Name:
             <input
+              placeholder="Task Name"
               type="text"
               value={name}
               onChange={e => setName(e.target.value)}

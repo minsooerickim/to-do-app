@@ -16,11 +16,9 @@ const Home: NextPage = () => {
 
       <main className={styles.main}>
         <h1 className={styles.title}>
-          Welcome to <a href="https://nextjs.org">To-do App!</a>
+          Welcome to <a href="https://nextjs.org">to-do-list!</a>
         </h1>
         <Button/>
-        <h3 className={styles.blue}>Your To-do List</h3>
-        <div id="tasksContainer" className={styles.tasksContainer}></div>
       </main>
 
       <footer className={styles.footer}>

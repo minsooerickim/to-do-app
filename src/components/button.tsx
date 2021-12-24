@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useState } from 'react';
 import styles from '../../styles/button.module.css'
 import { InputForm } from '../components/input'
 import ListQuery  from '../queries/listQuery'
@@ -7,16 +7,19 @@ export default function Button() {
 
   const displayTask = (event: React.MouseEvent<HTMLButtonElement>) => {
     event.preventDefault();
-    setIsFormVisible(!isFormVisible);
     setIsListVisible(!isListVisible);
-
+    
+    //set everything else to false
+    setIsFormVisible(false);
   };
 
   const createTask = (event: React.MouseEvent<HTMLButtonElement>) => {
     event.preventDefault();
 
     setIsFormVisible(!isFormVisible);
-    setIsListVisible(!isListVisible);
+    
+    //set everything else to false
+    setIsListVisible(false);
   }
   const [isFormVisible, setIsFormVisible] = useState(false);
   const [isListVisible, setIsListVisible] = useState(false);
@@ -47,7 +50,7 @@ export default function Button() {
         Display Task
         </button>
 
-        <div>
+        <div className={styles.subContent}>
           {isFormVisible && <div><InputForm/></div>}
           {isListVisible && <div><ListQuery/></div>}
         </div>
