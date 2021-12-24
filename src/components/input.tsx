@@ -1,12 +1,19 @@
 import { useState } from "react";
 import addItemMutation from '../mutations/addItemMutation';
+import deleteItemMutation from '../mutations/deleteItemMutation'
 
-export function InputForm() {
+export function InputForm(props: { value: string, type: string }) {
     const [name, setName] = useState("");
 
     const handleSubmit = (evt: { preventDefault: () => void; }) => {
         evt.preventDefault();
-        addItemMutation(name);
+
+        if (props.type === "add") {
+          addItemMutation(name);
+        }
+        else if (props.type === "delete") {
+          deleteItemMutation(name);
+        }
     }
 
     return (
@@ -19,7 +26,7 @@ export function InputForm() {
               onChange={e => setName(e.target.value)}
             />
           </label>
-          <input type="submit" value="Submit" />
+          <input type="submit" value={props.value} />
         </form>
     );
 }
