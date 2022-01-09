@@ -42,7 +42,6 @@ const resolvers = {
             var data = fs.readFileSync('./pages/api/db.json');
             var obj = JSON.parse(data);
 
-            console.log(newItem.title + " anddd " + newItem.id)
             let tmp = {
               "title": newItem.title,
               "id": newItem.id
