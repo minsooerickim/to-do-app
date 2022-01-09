@@ -10,12 +10,12 @@ type Props = {
 export default function App() {
     const appQuery = graphql`
     query listQuery {
-        list { title }        
+        list { title }
     }`
 
     function Header({ appQueryRef }: Props ) {
         const data = usePreloadedQuery(appQuery, appQueryRef)
-        
+        console.log(data);
         return(
             <div>
                 {data.list!.map((task, i) => {     
@@ -28,7 +28,7 @@ export default function App() {
     const [appQueryRef, load] = useQueryLoader<listQuery>(appQuery);
     useEffect(() => {
       load({
-        title: "hello"
+        
       })
     }, [])
 

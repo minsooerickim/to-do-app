@@ -7,10 +7,12 @@ const app = Fastify()
 
 const todoList = require('./db.json')
 const fs = require('fs');
+const { toGlobalId } = require('graphql-relay')
 
 const schema = `
   type Item {
     title: String!
+    id: ID!
   }
 
   type Query {
@@ -26,23 +28,24 @@ class Item {
     constructor(input) {
       console.log("constructor: " + input);
       this.title = input;
+      this.id = toGlobalId(Item, input);
     }
 }
 const resolvers = {
     Query: {
-        list: () => todoList
+        list: () => todoList,
     },
     Mutation: {
         addItemMutation (_,  { input } ){
-            console.log('Title: ', input);
             const newItem = new Item(input);
-            console.log(newItem)
         
             var data = fs.readFileSync('./pages/api/db.json');
             var obj = JSON.parse(data);
 
+            console.log(newItem.title + " anddd " + newItem.id)
             let tmp = {
-              "title": input
+              "title": newItem.title,
+              "id": newItem.id
             }
 
             obj.push(tmp);

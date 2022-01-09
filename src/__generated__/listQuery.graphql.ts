@@ -21,38 +21,39 @@ export type listQuery = {
 query listQuery {
   list {
     title
+    id
   }
 }
 */
 
 const node: ConcreteRequest = (function(){
-var v0 = [
-  {
-    "alias": null,
-    "args": null,
-    "concreteType": "Item",
-    "kind": "LinkedField",
-    "name": "list",
-    "plural": true,
-    "selections": [
-      {
-        "alias": null,
-        "args": null,
-        "kind": "ScalarField",
-        "name": "title",
-        "storageKey": null
-      }
-    ],
-    "storageKey": null
-  }
-];
+var v0 = {
+  "alias": null,
+  "args": null,
+  "kind": "ScalarField",
+  "name": "title",
+  "storageKey": null
+};
 return {
   "fragment": {
     "argumentDefinitions": [],
     "kind": "Fragment",
     "metadata": null,
     "name": "listQuery",
-    "selections": (v0/*: any*/),
+    "selections": [
+      {
+        "alias": null,
+        "args": null,
+        "concreteType": "Item",
+        "kind": "LinkedField",
+        "name": "list",
+        "plural": true,
+        "selections": [
+          (v0/*: any*/)
+        ],
+        "storageKey": null
+      }
+    ],
     "type": "Query",
     "abstractKey": null
   },
@@ -61,15 +62,35 @@ return {
     "argumentDefinitions": [],
     "kind": "Operation",
     "name": "listQuery",
-    "selections": (v0/*: any*/)
+    "selections": [
+      {
+        "alias": null,
+        "args": null,
+        "concreteType": "Item",
+        "kind": "LinkedField",
+        "name": "list",
+        "plural": true,
+        "selections": [
+          (v0/*: any*/),
+          {
+            "alias": null,
+            "args": null,
+            "kind": "ScalarField",
+            "name": "id",
+            "storageKey": null
+          }
+        ],
+        "storageKey": null
+      }
+    ]
   },
   "params": {
-    "cacheID": "3a2ae24ed5b49d6646e6a377fe4bc26a",
+    "cacheID": "7e1618356fa2645703b87d4a0d490fe1",
     "id": null,
     "metadata": {},
     "name": "listQuery",
     "operationKind": "query",
-    "text": "query listQuery {\n  list {\n    title\n  }\n}\n"
+    "text": "query listQuery {\n  list {\n    title\n    id\n  }\n}\n"
   }
 };
 })();

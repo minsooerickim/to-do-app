@@ -25,6 +25,7 @@ mutation addItemMutation(
 ) {
   addItemMutation(input: $input) {
     title
+    id
   }
 }
 */
@@ -39,37 +40,38 @@ var v0 = [
 ],
 v1 = [
   {
-    "alias": null,
-    "args": [
-      {
-        "kind": "Variable",
-        "name": "input",
-        "variableName": "input"
-      }
-    ],
-    "concreteType": "Item",
-    "kind": "LinkedField",
-    "name": "addItemMutation",
-    "plural": false,
-    "selections": [
-      {
-        "alias": null,
-        "args": null,
-        "kind": "ScalarField",
-        "name": "title",
-        "storageKey": null
-      }
-    ],
-    "storageKey": null
+    "kind": "Variable",
+    "name": "input",
+    "variableName": "input"
   }
-];
+],
+v2 = {
+  "alias": null,
+  "args": null,
+  "kind": "ScalarField",
+  "name": "title",
+  "storageKey": null
+};
 return {
   "fragment": {
     "argumentDefinitions": (v0/*: any*/),
     "kind": "Fragment",
     "metadata": null,
     "name": "addItemMutation",
-    "selections": (v1/*: any*/),
+    "selections": [
+      {
+        "alias": null,
+        "args": (v1/*: any*/),
+        "concreteType": "Item",
+        "kind": "LinkedField",
+        "name": "addItemMutation",
+        "plural": false,
+        "selections": [
+          (v2/*: any*/)
+        ],
+        "storageKey": null
+      }
+    ],
     "type": "Mutation",
     "abstractKey": null
   },
@@ -78,15 +80,35 @@ return {
     "argumentDefinitions": (v0/*: any*/),
     "kind": "Operation",
     "name": "addItemMutation",
-    "selections": (v1/*: any*/)
+    "selections": [
+      {
+        "alias": null,
+        "args": (v1/*: any*/),
+        "concreteType": "Item",
+        "kind": "LinkedField",
+        "name": "addItemMutation",
+        "plural": false,
+        "selections": [
+          (v2/*: any*/),
+          {
+            "alias": null,
+            "args": null,
+            "kind": "ScalarField",
+            "name": "id",
+            "storageKey": null
+          }
+        ],
+        "storageKey": null
+      }
+    ]
   },
   "params": {
-    "cacheID": "ee90e1a1a2d86d10eb59a077f45c0316",
+    "cacheID": "46b6d3dbe01b587967e04af7d3b245a0",
     "id": null,
     "metadata": {},
     "name": "addItemMutation",
     "operationKind": "mutation",
-    "text": "mutation addItemMutation(\n  $input: String!\n) {\n  addItemMutation(input: $input) {\n    title\n  }\n}\n"
+    "text": "mutation addItemMutation(\n  $input: String!\n) {\n  addItemMutation(input: $input) {\n    title\n    id\n  }\n}\n"
   }
 };
 })();
